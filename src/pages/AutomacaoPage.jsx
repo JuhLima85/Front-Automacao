@@ -24,7 +24,7 @@ export default function AutomacaoPage() {
         formData.append("file", file);
 
         try {
-            const response = await axios.post("http://codedeving.com.br/api/planilha/upload", formData, {
+            const response = await axios.post("/api/planilha/upload", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             setUploadStatus(response.data);
@@ -35,7 +35,7 @@ export default function AutomacaoPage() {
 
     const handleExecutarAutomacao1 = async () => {
         try {
-            const response = await axios.post("http://codedeving.com.br/api/automacaoCorban/executar", null, {
+            const response = await axios.post("/api/automacaoCorban/executar", null, {
                 params: { caminhoPlanilha: `uploads/${file?.name}` },
             });
             setUploadStatus(response.data);
@@ -52,7 +52,7 @@ export default function AutomacaoPage() {
 
         try {
             const response = await axios.post(
-                "http://codedeving.com.br/api/automacaoCorban/executar",
+                "/api/automacaoCorban/executar",
                 formData, // Enviando o formData corretamente
                 {
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
